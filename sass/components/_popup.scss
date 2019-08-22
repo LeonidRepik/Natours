@@ -1,0 +1,199 @@
+.popup {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height: 100vh;
+	background-color: rgba($primary-color-black, .6);
+	z-index: 3000;
+
+
+	@supports(-webkit-backdrop-filter: blur(10px)) or(backdrop-filter: blur(10px)){
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		background-color:rgba($primary-color-black, .3);
+	}
+
+
+
+	opacity: 0;
+	visibility: hidden;
+	transition: all .3s;
+
+	&:target{
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&-content{	
+		@include absCenter;
+		background-color:$primary-color-white;
+		width: 75%;
+		transform: translate(-50%, -50%);
+		border-radius: 3px;
+		box-shadow:0 2rem 4rem rgba($primary-color-black, .2);
+		display: table;
+		overflow: hidden;
+		opacity: 0;
+		transform: translate(-50%,-50%) scale(.2);
+		transition: all .6s .2s;
+
+			
+	}
+
+	&-left{
+		width:33.3333333%;
+		display: table-cell;
+	}
+
+	&-right{
+		width: 66.66666667%;
+		display: table-cell;
+		vertical-align: middle;
+		padding:3rem 5rem;
+
+	}
+
+	&-img{
+		display: block;
+		width:100%;
+
+		
+
+	}
+
+	&-text{
+		font-size: 1.4rem;
+		margin-bottom: 4rem;
+		column-count: 2;
+		column-gap: 4rem;
+		column-rule:1px solid $color-grey-light-2 ;
+
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
+	}
+	&-close{
+		&:link,
+		&:active{
+			position: absolute;
+			top:2.5rem;
+			right: 2.5rem;
+			text-decoration: none;
+			color:$primary-color-grey;
+			font-size: 3rem;
+			display: inline-block;
+			transition: all .3s;
+			line-height: 1;	// defines the amount of space above and below inline elements
+		}
+		&:visited{
+			color: $primary-color-light;
+		}
+		&:hover{
+			color:$primary-color-light;
+			cursor: pointer;
+		}
+	}
+
+	&:target &-content{
+		opacity: 1;
+		transform: translate(-50%,-50%) scale(1);
+	}
+
+		@include respond(tab-land){
+
+
+	&-content{	
+		width: 100%;		
+	}
+
+	&-left{
+		width:50%;
+		height: 50%;
+		// display:none;
+	}
+
+	&-right{
+		width: 50%;
+		// display: block;
+
+		h3{
+			text-align: center;
+		}
+
+		h2{
+			text-align: center;
+		}
+
+	}
+
+	&-text{
+		margin-bottom: 4rem;
+		column-count: 2;
+	}
+	&-close{
+		&:link,
+		&:active{
+			top:3.5rem;
+			right: 3.5rem;
+			font-size: 6rem;
+			display: inline-block;
+		}
+	}
+
+
+	}
+	@include respond(tab-port){
+		&-text{
+			column-count:1;
+		}
+		&-left{
+			display:none;
+		}
+		&-content{
+			display:block;
+		}
+	}
+
+		@media(max-width: 1400px){
+			
+		}
+	@include respond(phone){
+		height: 100vh;
+		&-text{
+			font-size:1.5rem;
+			column-count: 1;
+			margin-bottom: 2rem;
+		}
+		&-content{
+			height:100%;
+		}
+
+		&-right{
+			.btn{
+			display: block;
+			text-align: center;
+			margin-top: 2rem;
+
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

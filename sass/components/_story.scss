@@ -1,0 +1,94 @@
+.story{
+	width:75%;
+	margin: 0 auto;
+		background-color: rgba($primary-color-white, .6);
+
+	box-shadow:0 3rem 6rem  rgba($primary-color-black, 0.2);
+	padding: 6rem;
+	border-radius: 3px;
+	padding-left: 9rem;
+	font-size: $default-font-size;
+	transform: skewX(-12deg);
+
+	@include respond(tab-port){
+		width:100%;
+		padding: 4rem;
+		padding-left: 7rem;
+	}
+
+	@include respond(phone){
+		transform: skewX(0);
+	}
+
+	&-shape{
+		width:15rem;
+		height: 15rem;
+		float: left; // move to the left and all elements will be around it || and works only if dimentions are difined(width,hieght)
+		shape-outside: circle(50% at 50% 50%); // to defind how the content will floats the element, the first number represents radius, two seconds numbers in charge of the positioning
+		-webkit-shape-outside: circle(50% at 50% 50%);
+
+		clip-path: circle(50% at 50% 50%);
+		-webkit-clip-path: circle(50% at 50% 50%);
+		transform: translateX(-3rem) skewX(12deg);
+		position: relative;
+
+		@include respond(phone){
+		transform: translateX(-3rem) skewX(0);
+		}
+	}
+
+	&-img{
+		height: 100%;
+		transform: translate(-14%,0%) scale(1.4) ;
+		transition: all .5s;
+
+	}
+
+	&-text{
+	transform: skewX(12deg);
+
+		@include respond(phone){
+			transform: skewX(0);
+		}
+
+	}
+
+	&-caption{
+		position: absolute;
+		text-transform: uppercase;
+		top:50%;
+		left: 50%;
+		transform: translate(-50%,20%);
+		color:$primary-color-white;
+		font-size: 1.7rem;
+		text-align: center;
+		opacity: 0; 
+		transition: all .5s;
+		backface-visibility: hidden;
+
+	}
+
+	&:hover &-caption{
+		opacity: 1;
+		transform: translate(-50%,-50%);
+	}
+
+	&:hover &-img{
+		transform:translate(-14%,0%) scale(1.2);
+		filter: blur(3px) brightness(80%);
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
